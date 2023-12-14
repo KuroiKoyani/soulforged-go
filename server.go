@@ -77,6 +77,7 @@ func getMapDataHandler(w http.ResponseWriter, r *http.Request) {
 	defer cacheMutex.Unlock()
 
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Cache-Control", "public, no-cache, must-revalidate")
 
 	if len(cache.data) == 0 {
 		// Fetch data from MongoDB
